@@ -24,5 +24,7 @@ pipeline {
             steps{
                 sh 'mvn clean test'
                 
+        }
+        }
     }
 }
