@@ -22,7 +22,7 @@ pipeline {
         
         stage('Test'){
             steps{
-                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
                 
         }
         }
