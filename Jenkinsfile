@@ -5,6 +5,8 @@ node{
     
  //Get a maven tool
  def mvnHome = tool 'm2'
+ 
+ customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength'
     
  //Mark the code build 'stage'...
  stage 'Build'
