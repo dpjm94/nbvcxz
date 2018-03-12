@@ -4,7 +4,7 @@ node{
  git url: 'https://github.com/dpjm94/nbvcxz.git'
     
  //Get a maven tool
- def mvnHome = tool 'M3'
+ def mvnHome = tool 'm2'
     
  //Mark the code build 'stage'...
  stage 'Build'
