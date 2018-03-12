@@ -22,7 +22,8 @@ pipeline {
         
         stage('Test'){
             steps{
-                sh 'mvn clean test'
+                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
                 
         }
         }
