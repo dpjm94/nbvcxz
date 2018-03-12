@@ -16,14 +16,13 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn package'
             }
         }
         
         stage('Test'){
             steps{
-                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-                step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
+                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml']
                 
         }
         }
