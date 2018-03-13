@@ -16,26 +16,26 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn package'
+                echo 'Clean Build'
+                sh 'mvn clean package'
             }
         }
         
         stage('Test'){
             steps{
+                echo 'Testing'
+                sh 'mvn test'
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
             }
         }
         
-        stage('Test archive'){
+        stage('Sonar') {
             steps{
-                archive '**/target/*.jar'
-            }
-        }
-        
-        stage('build & SonarQube Scan') {
-            steps{
-            withSonarQubeEnv('Sonar5.4') {
-                sh 'mvn clean package sonar:sonar'
+                echo 'Sonar Scanner'
+                def scannerHome = tool 'SonarQube Scanner'
+                withSonarQubeEnv('Sonar5.4'){
+                    sh '${scannerHome}/bin/sonar-scanner'
+                //sh 'mvn clean package sonar:sonar'
             }   // SonarQube taskId is automatically attached to the pipeline context
         }
         }
