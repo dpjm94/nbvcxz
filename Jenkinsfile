@@ -32,7 +32,9 @@ pipeline {
         stage('Sonar') {
             steps{
                 echo 'Sonar Scanner'
-                def scannerHome 'SonarQube Scanner';
+                script{
+                scannerHome 'SonarQube Scanner'
+                }
                 withSonarQubeEnv('Sonar5.4'){
                     sh '${scannerHome}/bin/sonar-scanner'
                 //sh 'mvn clean package sonar:sonar'
