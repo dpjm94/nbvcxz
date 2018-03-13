@@ -44,6 +44,7 @@ pipeline {
                 def qg = waitForQualityGate('Sonar5.4') 
                 if (qg.status != 'OK') {
                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                }
             }
         }
     }
