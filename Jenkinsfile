@@ -3,6 +3,7 @@ pipeline {
     tools {
         maven 'm2'
         jdk 'Java8'
+        sonarQube 'SonarQube Scanner'
     }
     stages {
         stage ('Initialize') {
@@ -32,11 +33,8 @@ pipeline {
         stage('Sonar') {
             steps{
                 echo 'Sonar Scanner'
-                script{
-                scannerHome 'SonarQube Scanner'
-                }
                 withSonarQubeEnv('Sonar5.4'){
-                    sh '${scannerHome}/bin/sonar-scanner'
+                    sh '${sonarQube}/bin/sonar-scanner'
                 //sh 'mvn clean package sonar:sonar'
             }   // SonarQube taskId is automatically attached to the pipeline context
         }
