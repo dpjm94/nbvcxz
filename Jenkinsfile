@@ -3,7 +3,6 @@ pipeline {
     tools {
         maven 'm2'
         jdk 'Java8'
-        hudson.plugins.sonar.SonarRunnerInstallation 'SonarQube Scanner'
     }
     stages {
         stage ('Initialize') {
@@ -33,6 +32,7 @@ pipeline {
         stage('Sonar') {
             steps{
                 echo 'Sonar Scanner'
+                def scannerHome 'SonarQube Scanner';
                 withSonarQubeEnv('Sonar5.4'){
                     sh '${scannerHome}/bin/sonar-scanner'
                 //sh 'mvn clean package sonar:sonar'
