@@ -23,12 +23,27 @@ pipeline {
         stage('Test'){
             steps{
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-        }
+            }
         }
         
         stage('Test archive'){
             steps{
                 archive '**/target/*.jar'
+            }
+        }
+        
+        stage('build & SonarQube Scan') {
+            withSonarQubeEnv('Sonar5.4') {
+                sh 'mvn clean package sonar:sonar'
+            }   // SonarQube taskId is automatically attached to the pipeline context
+        }
+        
+        // No need to occupy a node
+        stage("Quality Gate") {
+            timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
+                def qg = waitForQualityGate('Sonar5.4') 
+                if (qg.status != 'OK') {
+                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
             }
         }
     }
