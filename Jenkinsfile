@@ -26,8 +26,6 @@ pipeline {
                 echo 'Testing'
                 sh 'mvn test'
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-                echo 'Unit Testing'
-                junit '**/target/surefire-reports/*.xml'
             }
         }
         
@@ -44,13 +42,16 @@ pipeline {
     
     post {
         always {
-            echo 'One way or another, I have finished'
+            echo 'Pipeline unit tests completed - recording JUnit results'
+            junit '**/target/surefire-reports/*.xml'
         }
         success {
             echo 'I succeeeded!'
         }
         failure {
-            echo 'I failed :('
+            mail to: 'dpjm94@live.ie',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
             echo 'Things were different before...'
