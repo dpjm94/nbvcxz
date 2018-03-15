@@ -17,7 +17,9 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Clean Build'
-                sh 'mvn clean package'
+                withMaven(jdk: 'JDK9.0.1', maven: 'Maven3.5.2') {
+                  sh 'mvn clean install'
+                }
             }
         }
         
@@ -41,4 +43,21 @@ pipeline {
         }
         }
     }
+    
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+    }
+}
 }
