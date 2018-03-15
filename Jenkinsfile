@@ -54,7 +54,9 @@ pipeline {
              body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
-            echo 'Things were different before...'
+            mail to: 'dpjm94@live.ie',
+             subject: "Changed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Things were different before with ${env.BUILD_URL}"
         }
     }
 }
