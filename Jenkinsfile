@@ -17,7 +17,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Clean Build'
-                withMaven(jdk: jdk, maven: maven) {
+                withMaven(jdk: 'java8', maven: 'm2') {
                   sh 'mvn clean install'
                 }
             }
