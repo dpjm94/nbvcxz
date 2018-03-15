@@ -27,7 +27,7 @@ pipeline {
                 sh 'mvn test'
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
                 echo 'Unit Testing'
-                junit '**/target/test-reports/*.xml'
+                junit '**/target/surefire-reports/*.xml'
             }
         }
         
@@ -45,7 +45,6 @@ pipeline {
     post {
         always {
             echo 'One way or another, I have finished'
-            deleteDir() /* clean up our workspace */
         }
         success {
             echo 'I succeeeded!'
