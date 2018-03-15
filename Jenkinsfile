@@ -26,6 +26,8 @@ pipeline {
                 echo 'Testing'
                 sh 'mvn test'
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                echo 'Unit Testing'
+                junit '**/target/test-reports/*.xml'
             }
         }
         
