@@ -17,7 +17,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Clean Build'
-                withMaven(jdk: 'JDK9.0.1', maven: 'Maven3.5.2') {
+                withMaven(jdk: jdk, maven: maven) {
                   sh 'mvn clean install'
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
                    sh 'mvn clean package sonar:sonar'
             }   // SonarQube taskId is automatically attached to the pipeline context
         }
-        }
+    }
     }
     
     post {
@@ -59,5 +59,4 @@ pipeline {
             echo 'Things were different before...'
         }
     }
-}
 }
