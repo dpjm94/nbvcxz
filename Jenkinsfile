@@ -45,9 +45,7 @@ pipeline {
                     
         }
     }
-    }
-    
-            stage('Sonar scan result check') {
+                    stage('Sonar scan result check') {
             steps {
                 timeout(time: 2, unit: 'MINUTES') {
                     retry(3) {
@@ -61,6 +59,10 @@ pipeline {
                 }
             }
         }
+        
+    }
+    
+
     
     post {
         always {
