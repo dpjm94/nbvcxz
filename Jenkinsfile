@@ -29,16 +29,34 @@ pipeline {
             }
         }
         
-        stage('Sonar') {
+        stage('Sonar scan execution') {
             steps{
                 echo 'Sonar Scanner'
-                withSonarQubeEnv('Sonar5.4'){
+                def mvnHome = tool 'm2'
+                withSonarQubeEnv{
+                    
+                    sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
                    //sh '${sonarQube}/bin/sonar-scanner'
-                   sh 'mvn clean package sonar:sonar'
+                   //sh 'mvn clean package sonar:sonar'
             }   // SonarQube taskId is automatically attached to the pipeline context
         }
     }
     }
+    
+            stage('Sonar scan result check') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    retry(3) {
+                        script {
+                            def qg = waitForQualityGate()
+                            if (qg.status != 'OK') {
+                                error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     
     post {
         always {
