@@ -31,6 +31,7 @@ pipeline {
         
         stage('Sonar scan execution') {
             steps{
+                script {
                 echo 'Sonar Scanner'
                 def mvnHome = tool 'm2'
                 withSonarQubeEnv{
@@ -38,7 +39,10 @@ pipeline {
                     sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
                    //sh '${sonarQube}/bin/sonar-scanner'
                    //sh 'mvn clean package sonar:sonar'
-            }   // SonarQube taskId is automatically attached to the pipeline context
+                }
+            }   
+                  
+                    
         }
     }
     }
