@@ -67,6 +67,9 @@ pipeline {
                     image 'maven:3.5.0'
                        }
                   }
+            steps{
+                
+            }
          } 
         
         stage('Docker Build') {
