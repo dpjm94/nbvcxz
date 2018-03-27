@@ -61,17 +61,6 @@ pipeline {
             }
         }
         
-        stage('Maven Install') {
-            agent {
-                docker {
-                    image 'maven:3.5.0'
-                       }
-                  }
-            steps{
-                echo 'Building maven....again'
-            }
-         } 
-        
         stage('Docker Build') {
             agent any
                 steps {
