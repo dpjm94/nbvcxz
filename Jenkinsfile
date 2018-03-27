@@ -5,6 +5,12 @@ def HTTP_PORT="8090"
 
 pipeline {
     agent any
+    node{
+        
+        label 'jenkinsfile'
+        customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
+
+    }
     tools {
         maven 'm2'
         jdk 'Java8'
@@ -69,7 +75,6 @@ pipeline {
         
         stage("Image Prune"){
             steps{
-                customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
                 imagePrune(CONTAINER_NAME)
             }
         }
