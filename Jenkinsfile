@@ -15,13 +15,6 @@ pipeline {
             }
         }
         
-        stage('Docker Build') {
-            agent none
-                steps {
-                    sh 'docker build -t dpjm94/nbvcxz:latest .'
-                      }
-            }
-
         stage ('Build') {
             steps {
                 echo 'Clean Build'
@@ -68,6 +61,12 @@ pipeline {
             }
         }
         
+         stage('Docker Build') {
+            agent none
+                steps {
+                    sh 'docker build -t dpjm94/nbvcxz:latest .'
+                      }
+            }
         
     }//end of stages
 
