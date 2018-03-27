@@ -67,7 +67,9 @@ pipeline {
         }
         
         stage("Image Prune"){
-        imagePrune(CONTAINER_NAME)
+            steps{
+                imagePrune(CONTAINER_NAME)
+            }
         }
         
          stage('Docker Build') {
