@@ -83,12 +83,7 @@ pipeline {
         
     }//end of stages
 
-    def imagePrune(containerName){
-    try {
-        sh "docker image prune -f"
-        sh "docker stop $containerName"
-    } catch(error){}
-}
+ 
        
     post {
         always {
@@ -111,5 +106,10 @@ pipeline {
     }
 }
 
-
+def imagePrune(containerName){
+    try {
+        sh "docker image prune -f"
+        sh "docker stop $containerName"
+    } catch(error){}
+}
 
