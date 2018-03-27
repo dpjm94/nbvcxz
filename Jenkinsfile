@@ -4,12 +4,13 @@ def DOCKER_HUB_USER="dpjm94"
 def HTTP_PORT="8090"
 
 pipeline {
-    agent any
+    agent{
     node{
         
         label 'jenkinsfile'
         customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
 
+    }
     }
     tools {
         maven 'm2'
