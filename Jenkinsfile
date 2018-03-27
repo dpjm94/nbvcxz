@@ -16,6 +16,7 @@ pipeline {
         }
         
         stage('Docker Build') {
+            agent none
                 steps {
                     sh 'docker build -t dpjm94/nbvcxz:latest .'
                       }
