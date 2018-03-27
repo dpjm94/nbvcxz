@@ -7,7 +7,7 @@ pipeline {
     agent{
     node{
         
-        label 'jenkinsfile'
+        label 'master'
         customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
 
     }
