@@ -65,11 +65,11 @@ pipeline {
                 }
             }
         }
-        
-        customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
+       
         
         stage("Image Prune"){
             steps{
+                customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
                 imagePrune(CONTAINER_NAME)
             }
         }
