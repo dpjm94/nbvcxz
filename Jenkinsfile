@@ -8,7 +8,6 @@ pipeline {
     tools {
         maven 'm2'
         jdk 'Java8'
-        docker 'myDocker'
     }
     stages {
         stage ('Initialize') {
@@ -17,7 +16,7 @@ pipeline {
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
-                //def dockerHome = tool 'myDocker'
+                def dockerHome = tool 'myDocker'
             }
         }
 
