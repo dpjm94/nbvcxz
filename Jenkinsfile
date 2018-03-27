@@ -11,7 +11,6 @@ pipeline {
     }
     stages {
         stage ('Initialize') {
-            def dockerHome = tool 'myDocker'
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
@@ -69,7 +68,7 @@ pipeline {
         
         stage ('Build Docker image'){
             steps{
-              echo 'image' 
+              
               
             }  
         }  
