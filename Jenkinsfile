@@ -11,12 +11,13 @@ pipeline {
     }
     stages {
         stage ('Initialize') {
+            def dockerHome = tool 'myDocker'
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "M2_HOME = ${M2_HOME}"
                 '''
-                def dockerHome = tool 'myDocker'
+                
             }
         }
 
