@@ -66,6 +66,8 @@ pipeline {
             }
         }
         
+        customWorkspace '/Users/Shared/Jenkins/Home/workspace/Password_strength-Pipeline'
+        
         stage("Image Prune"){
             steps{
                 imagePrune(CONTAINER_NAME)
