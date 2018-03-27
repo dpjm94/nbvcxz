@@ -71,18 +71,9 @@ pipeline {
                 sh 'mvn clean install'
                   }
          } 
-    }
-        
-        stage ('Build Docker image'){
-            steps{
-              
-              
-            }  
-        }  
-    }
-    
+    }//end of stages
 
-    
+       
     post {
         always {
             echo 'Pipeline unit tests completed - recording JUnit results'
