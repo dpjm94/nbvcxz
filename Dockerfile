@@ -1,9 +1,3 @@
-FROM anapsix/alpine-java
+FROM ubuntu:latest
 
-LABEL maintainer="dpjm94@live.ie"
-
-WORKDIR Password_strength-Pipeline
-
-COPY /target/nbvcxz-1.4.0.jar /target/nbvcxz-1.4.0-javadoc.jar
-
-CMD ["java","-jar","/target/nbvcxz-1.4.0-javadoc.jar"]
+RUN sudo apt-get update && sudo apt-get install -y wget
