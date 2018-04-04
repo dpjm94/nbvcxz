@@ -1,3 +1,7 @@
-FROM ubuntu:latest
+FROM tomcat:latest
 
-RUN sudo apt-get update && sudo apt-get install -y wget
+LABEL maintainer "dpjm94@live.ie"
+
+
+
+
