@@ -68,7 +68,7 @@ pipeline {
                     echo 'Building image...'
                     docker.withTool('Docker') {
                         
-                        sh 'Docker images'
+                        sh 'sudo docker pull maven:3.5.0-jdk-8-alpine'
                     //def root = tool 'Docker'
                     //withDockerContainer('maven:3.5.0-jdk-8-alpine', toolName: 'Docker') { sh "mvn clean install"}
                     //withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
