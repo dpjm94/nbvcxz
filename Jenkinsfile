@@ -1,8 +1,3 @@
-def CONTAINER_NAME="jenkins"
-def CONTAINER_TAG="latest"
-def DOCKER_HUB_USER="dpjm94"
-def HTTP_PORT="8090"
-
 pipeline {
     agent any
     tools {
