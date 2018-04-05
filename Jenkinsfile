@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven'
-            args '-v /tmp:/tmp -p 80:80'
-       }
-   }
+    agent any
     tools {
         maven 'm2'
         jdk 'Java8'
