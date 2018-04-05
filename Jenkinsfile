@@ -23,9 +23,6 @@ pipeline {
                     
                     docker.withTool('Docker') {
                         
-                        withDockerRegistry([url: 'unix:///var/run/docker.sock']) {
-                      sh 'Docker pull version'
-                    }
                         
                         //sh 'Docker pull maven:3.5.0-jdk-8-alpine'
                     //def root = tool 'Docker'
