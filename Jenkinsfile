@@ -66,14 +66,18 @@ pipeline {
             steps{
                 script{
                     echo 'Building image...'
-                    docker.withTool('Docker') {
+                    
+                    withDockerRegistry([url: 'unix:///var/run/docker.sock']) {
+                      sh 'Docker pull maven:3.5.0-jdk-8-alpine'
+                    }
+                    //docker.withTool('Docker') {
                         
-                        sh 'Docker pull maven:3.5.0-jdk-8-alpine'
+                        //sh 'Docker pull maven:3.5.0-jdk-8-alpine'
                     //def root = tool 'Docker'
                     //withDockerContainer('maven:3.5.0-jdk-8-alpine', toolName: 'Docker') { sh "mvn clean install"}
                     //withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
                     //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
-                    }
+                    //}
                 }//end script
             }
         }
@@ -102,3 +106,6 @@ pipeline {
         }
     }
 }
+
+
+
