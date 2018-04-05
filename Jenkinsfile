@@ -65,13 +65,6 @@ pipeline {
                 }
             }
         }
-       
-        stage("Build an image - Docker"){
-            steps{
-                checkout scm
-                sh "docker build -t http://localhost:32768 ."
-            }
-        }
         
     }//end of stages
 
