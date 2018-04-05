@@ -67,6 +67,13 @@ pipeline {
             }
         }
         
+        stage('Docker - Build Image'){
+            steps{
+                withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
+                step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
+            }
+        }
+        
     }//end of stages
 
  
