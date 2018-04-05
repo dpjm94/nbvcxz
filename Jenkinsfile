@@ -1,17 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            label 'docker-node'
+            image 'maven'
+            args '-v /tmp:/tmp -p 80:80'
+       }
+   }
     tools {
         maven 'm2'
         jdk 'Java8'
     }
-    
-   agent {
-    docker {
-        image 'maven:3-alpine'
-        label 'my-defined-label'
-        args  '-v /tmp:/tmp'
-    }
-}
     
     stages {
         stage ('Initialize') {
@@ -23,6 +21,8 @@ pipeline {
                 
             }
         }
+        
+        
         
         
         
