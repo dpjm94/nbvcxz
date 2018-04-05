@@ -68,7 +68,7 @@ pipeline {
                     echo 'Building image...'
                     
                     withDockerRegistry([url: 'unix:///var/run/docker.sock']) {
-                      sh 'Docker pull maven:3.5.0-jdk-8-alpine'
+                      sh 'Docker pull version'
                     }
                     //docker.withTool('Docker') {
                         
