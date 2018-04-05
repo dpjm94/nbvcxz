@@ -66,7 +66,7 @@ pipeline {
             steps{
                 
                     echo 'Building image...'
-                    withDockerContainer("maven:3.5.0-jdk-8-alpine", toolName: 'Docker') { sh "mvn clean install"}
+                    withDockerContainer('maven:3.5.0-jdk-8-alpine', toolName: 'Docker') { sh "mvn clean install"}
                     step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
                 
             }
