@@ -67,9 +67,9 @@ pipeline {
                 script{
                     echo 'Building image...'
                     
-                    def root = tool 'Docker'
+                    //def root = tool 'Docker'
                     //withDockerContainer('maven:3.5.0-jdk-8-alpine', toolName: 'Docker') { sh "mvn clean install"}
-                    withDockerContainer("maven:3.5.0-jdk-8-alpine", toolName: {root}) { sh "mvn clean install"}
+                    withDockerContainer("maven:3.5.0-jdk-8-alpine", toolName: "Docker") { sh "mvn clean install"}
                     step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
                 
                 }//end script
