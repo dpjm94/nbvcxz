@@ -24,7 +24,7 @@ pipeline {
                     docker.withTool('Docker') {
                         
                         
-                     sh 'Docker build . -t maven:3.5.0-jdk-8-alpine'
+                     sh 'Docker run hello-world'
                         
                     //def root = tool 'Docker'
                     //withDockerContainer('maven:3.5.0-jdk-8-alpine', toolName: 'Docker') { sh "mvn clean install"}
