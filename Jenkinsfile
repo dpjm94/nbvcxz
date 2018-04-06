@@ -28,9 +28,11 @@ pipeline {
                     echo 'Building image...'
                     
                     
-                    docker.withTool('docker') {
-                        docker.build('my-app:latest', 'target/docker/stage')
-                    }  
+                    sh 'echo myCustomEnvVar = $myCustomEnvVar'
+                    
+                    //docker.withTool('docker') {
+                    //    docker.build('my-app:latest', 'target/docker/stage')
+                    //}  
                         
                      //sh 'Docker run hello-world'
                         
