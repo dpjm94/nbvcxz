@@ -20,14 +20,15 @@ pipeline {
         
         
         
-        //stage('Docker - Build Image'){
-            //steps{
-                //script{
-                    //echo 'Building image...'
+        stage('Docker - Build Image'){
+            steps{
+                script{
+                    echo 'Building image...'
                     
                     
-                    //docker.withTool('Docker') {
-                        
+                    docker.withTool('docker') {
+                        docker.build('my-app:latest', 'target/docker/stage')
+                    }  
                         
                      //sh 'Docker run hello-world'
                         
@@ -36,9 +37,9 @@ pipeline {
                     //withDockerContainer("maven:3.5.0-jdk-8-alpine") { sh "mvn clean install"}
                     //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
                     //}
-               // }//end script
-            //}
-       // }
+                }//end script
+            }
+        }
         
         stage ('Build') {
             steps {
