@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent any
     tools {
         maven 'm2'
         jdk 'Java8'
