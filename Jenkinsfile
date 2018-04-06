@@ -17,18 +17,14 @@ pipeline {
                 
             }
         }
-        
-        
-        
-        
-        
-        stage('Docker - Build Image'){
-            steps{
+       
+        //stage('Docker - Build Image'){
+            //steps{
                 //script{
-                    echo 'Building image...'
+                    //echo 'Building image...'
                     
                     
-                    sh 'echo myCustomEnvVar = $myCustomEnvVar'
+                    //sh 'echo myCustomEnvVar = $myCustomEnvVar'
                     
                     //docker.withTool('docker') {
                     //    docker.build('my-app:latest', 'target/docker/stage')
@@ -42,8 +38,8 @@ pipeline {
                     //step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'] )
                     //}
                 //}//end script
-            }
-        }
+            //}
+        //}
         
         stage ('Build') {
             steps {
