@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+  agent { label 'docker' }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+  }
+  triggers {
+    cron('@daily')
+  }
     tools {
         maven 'm2'
         jdk 'Java8'
