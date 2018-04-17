@@ -14,15 +14,21 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-              node{
-              DOCKER_HOME = tool "docker"
+              
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
-                    echo "DOCKER_HOME = ${DOCKER_HOME}"
                 '''
-              }
+
+            }
+        }
+      
+      stage('Example Build') {
+            agent { docker 'maven:3-alpine' } 
+            steps {
+                echo 'Hello, Maven'
+                sh 'mvn --version'
             }
         }
         
@@ -88,12 +94,12 @@ pipeline {
             echo 'It succeeeded!'
         }
         failure {
-            mail to: 'dpjm94@live.ie',
+            mail to: 'donalmaher25@gmail.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
-            mail to: 'dpjm94@live.ie',
+            mail to: 'donalmaher25gmail.com',
              subject: "Changed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Things were different before with ${env.BUILD_URL}"
         }
