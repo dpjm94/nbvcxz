@@ -16,7 +16,9 @@ pipeline {
             steps {
                 sh '''
                     echo "PATH = ${PATH}"
+                    echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
+                    echo "DOCKER_HOME = ${DOCKER_HOME}"
                 '''
                 
             }
