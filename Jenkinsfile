@@ -14,23 +14,19 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-              
+              script{
+                
+                def DOCKER_HOME = tool 'docker'
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
+                    echo "DOCKER_HOME = ${DOCKER_HOME}"
                 '''
-
+              }
             }
         }
-      
-      stage('Example Build') {
-            agent { docker 'maven:3-alpine' } 
-            steps {
-                echo 'Hello, Maven'
-                sh 'mvn --version'
-            }
-        }
+     
         
         stage ('Build') {
             steps {
