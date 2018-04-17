@@ -14,6 +14,8 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
+              
+              DOCKER_HOME = tool "docker"
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
