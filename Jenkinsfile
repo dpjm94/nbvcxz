@@ -16,7 +16,7 @@ pipeline {
             steps {
               script{
                 
-                def DOCKER_HOME = tool 'docker'
+                def DOCKER_HOME = tool 'doc'
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
