@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-              
+              node{
               DOCKER_HOME = tool "docker"
                 sh '''
                     echo "PATH = ${PATH}"
@@ -22,7 +22,7 @@ pipeline {
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
                     echo "DOCKER_HOME = ${DOCKER_HOME}"
                 '''
-                
+              }
             }
         }
         
