@@ -17,11 +17,14 @@ pipeline {
               script{
                 
                 def DOCKER_HOME = tool 'doc'
+                def SCANNER_HOME = tool 'Scanner'
+                
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
                     echo "DOCKER_HOME = ${DOCKER_HOME}"
+                    echo "SONAR_RUNNER_HOME = ${SCANNER_HOME}"
                 '''
               }
             }
@@ -48,13 +51,15 @@ pipeline {
                 script {
                 echo 'Sonar Scanner'
                 def mvnHome = tool 'm2'
-                def scannerHome = tool 'SonarQube Scanner'
+                def SCANNER_HOME = tool 'Scanner'
+                  
                 withSonarQubeEnv{
                     
                     sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
-                    sh '${scannerHome}/bin/sonar-scanner'
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'  
+                    sh "${SCANNER_HOME}/bin/sonar-scanner"
                     //sh 'mvn clean package sonar:sonar'
-                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+                    
                 }
             }   
                   
