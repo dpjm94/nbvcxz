@@ -48,11 +48,13 @@ pipeline {
                 script {
                 echo 'Sonar Scanner'
                 def mvnHome = tool 'm2'
+                def scannerHome = tool 'SonarQube Scanner'
                 withSonarQubeEnv{
                     
                     sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
-                   //sh '${sonarQube}/bin/sonar-scanner'
-                    sh 'mvn clean package sonar:sonar'
+                    sh '${scannerHome}/bin/sonar-scanner'
+                    //sh 'mvn clean package sonar:sonar'
+                    sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
                 }
             }   
                   
