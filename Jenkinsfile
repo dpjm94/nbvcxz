@@ -24,7 +24,7 @@ pipeline {
                     echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
                     echo "DOCKER_HOME = ${DOCKER_HOME}"
-                    echo "SONAR_RUNNER_HOME = ${SCANNER_HOME}"
+                    echo "SONAR_RUNNER_HOME = ${SONAR_RUNNER_HOME}"
                 '''
               }
             }
