@@ -87,6 +87,7 @@ pipeline {
           sh '''
           echo "DOCKER_HOME = ${DOCKER_HOME}"
           '''
+ 
         }
       }
         
