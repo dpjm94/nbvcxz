@@ -32,7 +32,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Clean Build'
-                  sh 'mvn clean install' 
+                  sh 'mvn -B -DskipTests clean package' 
             }
         }
         
