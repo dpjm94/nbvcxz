@@ -16,15 +16,13 @@ pipeline {
             steps {
               script{
                 
-                def DOCKER_HOME = tool 'doc'
                 def SCANNER_HOME = tool 'Scanner'
                 
                 sh '''
                     echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
-                    echo "DOCKER_HOME = ${DOCKER_HOME}"
-                    echo "SONAR_RUNNER_HOME = ${SONAR_RUNNER_HOME}"
+                    echo "SONAR_RUNNER_HOME = ${SCANNER_HOME}"
                 '''
               }
             }
@@ -81,6 +79,16 @@ pipeline {
                 }
             }
         }
+      
+      stage('Docker'){
+        steps{
+          def DOCKER_HOME = tool 'doc'
+          
+          sh '''
+          echo "DOCKER_HOME = ${DOCKER_HOME}"
+          '''
+        }
+      }
         
  
         
