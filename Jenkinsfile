@@ -82,12 +82,13 @@ pipeline {
       
       stage('Docker'){
         steps{
+          script{
           def DOCKER_HOME = tool 'doc'
           
           sh '''
           echo "DOCKER_HOME = ${DOCKER_HOME}"
           '''
- 
+          }
         }
       }
         
