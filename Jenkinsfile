@@ -53,10 +53,10 @@ pipeline {
                   
                 withSonarQubeEnv{
                     
-                    sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
+                    //sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
                     sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'  
-                    //sh "${SCANNER_HOME}/bin/sonar-scanner"
-                    //sh 'mvn clean package sonar:sonar'
+                    sh "${SCANNER_HOME}/bin/sonar-scanner"
+                    sh 'mvn clean package sonar:sonar'
                     
                 }
             }   
