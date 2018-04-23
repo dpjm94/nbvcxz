@@ -120,27 +120,12 @@
    
             </plugin>
                  
-                 <profile>
-       <id>sonar</id>
-       <activation>
-            <activeByDefault>true</activeByDefault>
-       </activation>
-       <properties>
-           <sonar.host.url>
-                http://localhost:9000
-           </sonar.host.url>
-       </properties>
-         
-       <properties>
+ <properties>
 	<sonar.sources>src/main</sonar.sources>
-         <sonar.tests>src/test</sonar.tests>
-       </properties>
-                          
-                          
-                </profile>
-                 
-            
-                 
+        <sonar.tests>src/test</sonar.tests>
+</properties>
+		
+		
 <!-- Sonar-JaCoCo integration plugin -->
              <plugin>
 	<groupId>org.jacoco</groupId>
