@@ -119,13 +119,8 @@
 	            </configuration>
    
             </plugin>
-                 
- <properties>
-	<sonar.sources>src/main</sonar.sources>
-        <sonar.tests>src/test</sonar.tests>
-</properties>
-		
-		
+	 
+	
 <!-- Sonar-JaCoCo integration plugin -->
              <plugin>
 	<groupId>org.jacoco</groupId>
