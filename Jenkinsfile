@@ -74,17 +74,9 @@ pipeline {
             }
         }
       
-      stage('Package') {
-            steps {
-                echo 'Packaging...'
-                sh 'mvn package -DskipTests'
-            }
-        }
-      
-       stage('Deliver') {
+       stage('Deploy Application') {
             steps {
                 echo 'Delivering...'
-                sh './deliver.sh'
             }
         }
        
