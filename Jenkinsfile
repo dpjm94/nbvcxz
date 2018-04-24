@@ -74,18 +74,6 @@ pipeline {
             }
         }
       
-      stage('Docker'){
-        steps{
-          script{
-          def DOCKER_HOME = tool 'doc'
-          
-          sh '''
-          echo "DOCKER_HOME = ${DOCKER_HOME}"
-          '''
-          }
-        }
-      }
-      
       stage('Package') {
             steps {
                 echo 'Packaging...'
@@ -96,7 +84,7 @@ pipeline {
        stage('Deliver') {
             steps {
                 echo 'Delivering...'
-                sh 'deliver.sh'
+                sh './deliver.sh'
             }
         }
        
