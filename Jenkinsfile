@@ -100,11 +100,15 @@ pipeline {
             }
         }
       
-      stage('Deployment'){
-             steps{
-                echo 'Deployment'
-                sh 'mvn clean deploy'
-          }
+       stage('Deploy') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS' (1)
+              }
+            }
+            steps {
+                sh 'make publish'
+            }
         }
        
         
