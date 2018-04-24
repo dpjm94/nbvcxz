@@ -102,8 +102,7 @@ pipeline {
       
        stage('Deploy') {
             steps {
-                echo 'Deploying'
-                sh 'make publish'
+                echo 'Do stuff/deploy.'
             }
         }
        
