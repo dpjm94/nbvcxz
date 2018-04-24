@@ -96,6 +96,7 @@ pipeline {
        stage('Deploy') {
             steps {
                 echo 'Do stuff/deploy.'
+                sh './jenkins/scripts/deliver.sh'
             }
         }
        
