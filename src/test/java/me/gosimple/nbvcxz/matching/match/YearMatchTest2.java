@@ -15,7 +15,7 @@ public class YearMatchTest2 {
 
 
     /**
-     * Test of guessEntropy method, of class YearMatch.
+     * Test of guessEntropy method, of class YearMath.
      */
     @Test
     public void testCalculateEntropy()
