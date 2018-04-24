@@ -96,7 +96,7 @@ pipeline {
        stage('Deliver') {
             steps {
                 echo 'Delivering...'
-                sh './scripts/deliver.sh'
+                sh 'deliver.sh'
             }
         }
        
