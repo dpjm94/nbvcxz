@@ -43,6 +43,13 @@ pipeline {
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
             }
         }
+      
+        stage('Deployment'){
+             steps{
+                sh './deploy staging'
+                sh './run-smoke-tests'
+          }
+        }
         
         stage('Sonar scan execution') {
             steps{
@@ -54,7 +61,6 @@ pipeline {
                 withSonarQubeEnv{
                     
                     //sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
-         
                     //sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'  
                     //sh "'${SCANNER_HOME}/bin/sonar-scanner' verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
                     
