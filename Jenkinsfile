@@ -24,14 +24,14 @@ pipeline {
         
         stage ('Build') {
             steps {
-                echo 'Clean Build'
+                echo 'Clean Build...'
                   sh 'mvn -B -DskipTests clean package'
             }
         }
         
         stage('Test'){
             steps{
-                echo 'Testing'
+                echo 'Testing...'
                 sh 'mvn test'
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
             }
@@ -40,7 +40,7 @@ pipeline {
         stage('Sonar scan execution') {
             steps{
                 script {
-                echo 'Sonar Scanner'
+                echo 'Sonar Scanner...'
                 def mvnHome = tool 'm2'
                 def SCANNER_HOME = tool 'Scanner'
                   
@@ -88,14 +88,14 @@ pipeline {
       
       stage('Package') {
             steps {
-                echo 'Packaging'
+                echo 'Packaging...'
                 sh 'mvn package -DskipTests'
             }
         }
       
-       stage('Deploy') {
+       stage('Deliver') {
             steps {
-                echo 'Do stuff/deploy.'
+                echo 'Delivering...'
                 sh './jenkins/scripts/deliver.sh'
             }
         }
