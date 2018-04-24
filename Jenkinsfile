@@ -34,6 +34,7 @@ pipeline {
                 echo 'Testing...'
                 sh 'mvn test'
                 step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+		jacoco()
             }
         }
       
@@ -76,7 +77,8 @@ pipeline {
       
        stage('Deploy Application') {
             steps {
-                echo 'Delivering...'
+                echo 'Deploying...'
+		
             }
         }
        
