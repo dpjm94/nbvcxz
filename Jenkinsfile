@@ -32,7 +32,7 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Clean Build'
-                  sh 'mvn -B -DskipTests clean package' 
+                  sh 'mvn clean compile' 
             }
         }
         
@@ -44,13 +44,6 @@ pipeline {
             }
         }
       
-        stage('Deployment'){
-             steps{
-                sh './deploy staging'
-                sh './run-smoke-tests'
-          }
-        }
-        
         stage('Sonar scan execution') {
             steps{
                 script {
@@ -99,8 +92,21 @@ pipeline {
           }
         }
       }
-        
- 
+      
+      stage('Package') {
+            steps {
+                echo 'Packaging'
+                sh 'mvn package -DskipTests'
+            }
+        }
+      
+      stage('Deployment'){
+             steps{
+                echo 'Deployment'
+                sh 'mvn clean deploy'
+          }
+        }
+       
         
     }//end of stages
 
@@ -108,18 +114,20 @@ pipeline {
        
     post {
         always {
-            echo 'Pipeline unit tests completed - recording JUnit results'
+            echo 'PIPELINE UNIT TESTS COMPLETED - RECORDING JUNIT RESULTS'
             junit '**/target/surefire-reports/*.xml'
         }
         success {
-            echo 'It succeeeded!'
+            echo 'JENKINS PIPELINE SUCCESSFUL'
         }
         failure {
+            echo 'JENKINS PIPELINE FAILED'
             mail to: 'donalmaher25@gmail.com',
              subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
+            echo 'JENKINS PIPELINE STATUS HAS CHANGED SINCE LAST EXECUTION'
             mail to: 'donalmaher25gmail.com',
              subject: "Changed Pipeline: ${currentBuild.fullDisplayName}",
              body: "Things were different before with ${env.BUILD_URL}"
