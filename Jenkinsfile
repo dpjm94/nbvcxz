@@ -1,11 +1,6 @@
 pipeline {
   agent any
-  options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-  }
-  triggers {
-    cron('@daily')
-  }
+
     tools {
         maven 'm2'
         jdk 'Java8'
@@ -19,10 +14,8 @@ pipeline {
                 def SCANNER_HOME = tool 'Scanner'
                 
                 sh '''
-                    echo "PATH = ${PATH}"
                     echo "JAVA_HOME = ${JAVA_HOME}"
                     echo "MAVEN_HOME = ${MAVEN_HOME}"
-                    echo "SONAR_RUNNER_HOME = ${SCANNER_HOME}"
                 '''
               }
             }
