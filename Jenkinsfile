@@ -21,7 +21,6 @@ pipeline {
             }
         }
      
-        
         stage ('Build') {
             steps {
                 echo 'Clean Build...'
