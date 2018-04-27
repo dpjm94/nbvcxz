@@ -7,10 +7,8 @@
     <groupId>me.gosimple</groupId>
     <artifactId>nbvcxz</artifactId>
 
-    
-
-    <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <version>1.4.0</version>
 
     <name>nbvcxz</name>
     <description>Nbvcxz takes heavy inspiration from the zxcvbn library built by Dropbox, and in a lot of ways is
@@ -55,6 +53,16 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+
+
+	<distributionManagement>
+   <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+   </snapshotRepository>
+        </distributionManagement>
+
+	
 
     <build>
         <resources>
@@ -180,52 +188,49 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>deploy-to-sonatype</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                            <goal>release</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+           <plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.5.1</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+   </executions>
+   <configuration>
+      <serverId>nexus</serverId>
+      <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+      <skipStaging>true</skipStaging>
+   </configuration>
+</plugin>
 
-            <plugin> 
-		<groupId>org.apache.tomcat.maven</groupId> 
-		<artifactId>tomcat7-maven-plugin</artifactId> 
-		<version>2.2</version>
-		<configuration> 
-			<server>tomcat-development-server</server> 
-			<url>http://192.168.1.35:9999/manager/text</url> 					<warFile>target\nbvcxz.jar</warFile> 
-			<path>/nbvcxz</path>		
-		</configuration>
-	     </plugin>
+     <plugin>
+   	<artifactId>maven-deploy-plugin</artifactId>
+   	<version>2.8.1</version>
+       <executions>
+     	 <execution>
+         	<id>default-deploy</id>
+         	<phase>deploy</phase>
+         	<goals>
+            	<goal>deploy</goal>
+         	</goals>
+      	  </execution>
+        </executions>
+      </plugin>
 
 
-		<plugin>
-    		   <artifactId>maven-war-plugin</artifactId>
-   		     <configuration>
-        		<attachClasses>true</attachClasses>
-        		<webXml>target/web.xml</webXml>
-        		<webResources>
-           		<resource>
-                		<directory>src/main/webapp</directory>
-                		<filtering>true</filtering>
-            		</resource>
-        		</webResources>
-    		     </configuration>
-		</plugin>	     
+<plugin>
+   <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-deploy-plugin</artifactId>
+   <version>${maven-deploy-plugin.version}</version>
+   <configuration>
+      <skip>true</skip>
+   </configuration>
+</plugin>
 
         </plugins>
     </build>

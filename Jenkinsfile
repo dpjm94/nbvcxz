@@ -77,7 +77,7 @@ pipeline {
        stage('Deploy Application') {
             steps {
                 echo 'Deploying...'
-		sh 'mvn tomcat7:redeploy'
+		sh 'mvn clean deploy -Dmaven.test.skip=true'
 		
             }
         }
