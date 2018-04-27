@@ -8,7 +8,10 @@
     <artifactId>nbvcxz</artifactId>
 
     <packaging>jar</packaging>
-    <version>1.4.0</version>	
+    <version>1.4.0</version>
+
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
 
     <name>nbvcxz</name>
     <description>Nbvcxz takes heavy inspiration from the zxcvbn library built by Dropbox, and in a lot of ways is
@@ -209,7 +212,21 @@
 			<path>/nbvcxz</path>		
 		</configuration>
 	     </plugin>
-            
+
+
+		<plugin>
+    		   <artifactId>maven-war-plugin</artifactId>
+   		     <configuration>
+        		<attachClasses>true</attachClasses>
+        		<webXml>target/web.xml</webXml>
+        		<webResources>
+           		<resource>
+                		<directory>src/main/webapp</directory>
+                		<filtering>true</filtering>
+            		</resource>
+        		</webResources>
+    		     </configuration>
+		</plugin>	     
 
         </plugins>
     </build>
