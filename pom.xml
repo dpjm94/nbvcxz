@@ -203,7 +203,9 @@
 		<artifactId>tomcat7-maven-plugin</artifactId> 
 		<version>2.2</version>
 		<configuration> 
-			<ignorePackaging>true</ignorePackaging>
+			<server>tomcat-development-server</server> 
+			<url>http://192.168.1.35:9999/manager/text</url> 					<warFile>target\nbvcxz.war</warFile> 
+			<path>/nbvcxz</path>		
 		</configuration>
 	     </plugin>
             
