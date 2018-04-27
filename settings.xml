@@ -9,3 +9,12 @@
            </sonar.host.url>
        </properties>
 </profile>
+
+
+<servers>
+<server> 
+<id>tomcat-development-server</id> 
+<username>admin</username>
+<password>password</password>
+</server>
+</servers>
