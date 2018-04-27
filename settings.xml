@@ -15,6 +15,6 @@
 <server> 
 <id>tomcat-development-server</id>
 <username>admin</username>
-<password>admin</password> 
+<password>password</password> 
 </server>
 </servers>
