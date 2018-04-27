@@ -7,8 +7,8 @@
     <groupId>me.gosimple</groupId>
     <artifactId>nbvcxz</artifactId>
 
-    <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>	
+    <packaging>jar</packaging>
+    <version>1.4.0</version>	
 
     <name>nbvcxz</name>
     <description>Nbvcxz takes heavy inspiration from the zxcvbn library built by Dropbox, and in a lot of ways is
@@ -205,7 +205,7 @@
 		<version>2.2</version>
 		<configuration> 
 			<server>tomcat-development-server</server> 
-			<url>http://192.168.1.35:9999/manager/text</url> 					<warFile>target\nbvcxz.war</warFile> 
+			<url>http://192.168.1.35:9999/manager/text</url> 					<warFile>target\nbvcxz-1.0-SNAPSHOT.war</warFile> 
 			<path>/nbvcxz</path>		
 		</configuration>
 	     </plugin>
