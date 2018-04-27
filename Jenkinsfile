@@ -77,6 +77,7 @@ pipeline {
        stage('Deploy Application') {
             steps {
                 echo 'Deploying...'
+		sh 'mvn tomcat7:deploy'
 		
             }
         }
