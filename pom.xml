@@ -205,7 +205,7 @@
 		<version>2.2</version>
 		<configuration> 
 			<server>tomcat-development-server</server> 
-			<url>http://192.168.1.35:9999/manager/text</url> 					<warFile>target\nbvcxz-1.0-SNAPSHOT.war</warFile> 
+			<url>http://192.168.1.35:9999/manager/text</url> 					<warFile>target\nbvcxz.jar</warFile> 
 			<path>/nbvcxz</path>		
 		</configuration>
 	     </plugin>
