@@ -22,7 +22,7 @@ public class YearMatchTest2 {
     {
         System.out.println("Test of guessEntropy method, of class AgeMatch");
 
-        HashMap<String, Double> expectedMatch = new HashMap();
+        HashMap<String, Double> xpectedMatch = new HashMap<>();
         expectedMatch.put("1900", 7.011227255423254d);
         expectedMatch.put("1982", 7.011227255423254d);
         expectedMatch.put("1990", 7.011227255423254d);
