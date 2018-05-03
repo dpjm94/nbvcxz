@@ -29,7 +29,7 @@ public class YearMatchTest2 {
         expectedMatch.put("1993", 7.011227255423254d);
         expectedMatch.put("2000", 7.011227255423254d);
         expectedMatch.put("2007", 7.011227255423254d);
-        expectedMatch.put("2012", 7.011227255423254d);
+        expectedatch.put("2012", 7.011227255423254d);
         expectedMatch.put("2016", 7.011227255423254d);
         expectedMatch.put("2019", 7.011227255423254d);
 
